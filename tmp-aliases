@@ -1,0 +1,3 @@
+tree = eza -T
+ls = eza
+l = eza -bla
