@@ -75,7 +75,17 @@
     btop
     nixd
     nixfmt-rfc-style
+    efibootmgr
   ];
+
+  fonts = {
+    enableDefaultPackages = true;
+
+    packages = with pkgs; [
+      ubuntu_font_family
+      nerd-fonts.fira-code
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
