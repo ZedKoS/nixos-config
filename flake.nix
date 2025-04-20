@@ -51,15 +51,10 @@
           hostname = "zeta-asus";
           system = "x86_64-linux";
         })
-        (mkHost {
-          hostname = "sus";
-          system = "baka";
-        })
       ];
 
     in
     {
       nixosConfigurations = builtins.foldl' (a: b: a // b) { } (builtins.map mkSystemConfig hosts);
-      # nixosConfigurations = mkSystemConfig (mkHost {hostname = "zeta-asus"; system = "x86_64-linux"; });
     };
 }

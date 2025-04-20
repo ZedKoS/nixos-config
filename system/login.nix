@@ -10,8 +10,6 @@ let
         ly.settings = {
           animation = "matrix";
           box_title = "Box Title Test";
-          vi_mode = true;
-          vi_default = "insert";
         };
 
         defaultSession = config.desktop.defaultSession;

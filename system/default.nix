@@ -39,33 +39,6 @@
   # Time zone
   time.timeZone = "Europe/Rome";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  
-  # Enable the X11 windowing system.
-  # services.xserver = {
-  #   enable = true;
-  #   desktopManager = {
-  #     xterm.enable = true;
-  #     xfce.enable = true;
-  #   };
-  # };
-
-  # services.displayManager = {
-  #   ly.enable = true;
-  #   ly.settings = {
-  #     animation = "matrix";
-  #     box_title = "Box Title Test";
-  #     vi_mode = true;
-  #     vi_default = "insert";
-  #   };
-  #   defaultSession = "xfce";
-  # };
-
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -116,17 +89,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

@@ -16,7 +16,12 @@ let
       };
     };
 
-    # hyprland = {};
+    plasma6 = {
+      services.desktopManager.plasma6.enable = true;
+
+      # This only takes effect if SDDM is enabled
+      services.displayManager.sddm.wayland.enable = true;
+    };
   };
 in
 {
