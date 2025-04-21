@@ -10,10 +10,10 @@
   home.username = username;
   home.homeDirectory = "/home/${username}";
 
-  # Let Home Manager install and manage itself.
+  # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
-  # Be careful when changing this value
+  # Change this value only if you know what you're doing
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -21,6 +21,8 @@
   ];
 
   programs = {
+    bash.enable = true;
+
     bat.enable = true;
     eza.enable = true;
 
@@ -49,9 +51,9 @@
   home.shellAliases = {
     ls = "eza -b";
     tree = "eza -T";
+
+    cat = "bat";
   };
 
-  # home.sessionVariables = {
-  #   EDITOR = "hx";
-  # };
+  # i18n.glibcLocales = {};
 }
