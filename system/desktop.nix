@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, lib, pkgs, ... }:
 let
   sessions = [ config.desktop.defaultSession ] ++ config.desktop.otherSessions;
 
@@ -32,6 +32,10 @@ in
           enable = true;
           xwayland.enable = true;
         };
+
+        environment.systemPackages = with pkgs; [
+          wofi
+        ];
 
         # This only takes effect if SDDM is enabled
         services.displayManager.sddm.wayland.enable = true;
