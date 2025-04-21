@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   host,
   ...
 }:
@@ -54,28 +55,26 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.zeta = {
+  users.users.${username} = {
     isNormalUser = true;
+    initialPassword = username;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      eza
-      helix
-      librewolf
-      neofetch
       chezmoi
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # (Almost) essentials
+    efibootmgr
     git
     vim
     wget
     btop
-    nixd
+
+    # Nix utils
+    nil
     nixfmt-rfc-style
-    efibootmgr
   ];
 
   fonts = {

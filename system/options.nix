@@ -2,7 +2,8 @@
 let
   sessions = [
     "xfce"
-    "hyprland"
+    "plasma6"
+    # "hyprland"
   ];
   displayManagers = [
     "ly"

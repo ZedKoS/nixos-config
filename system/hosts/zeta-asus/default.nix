@@ -5,6 +5,6 @@
   config = {
     desktop.displayManager = "ly";
     desktop.defaultSession = "xfce";
-    desktop.otherSessions = [];
+    desktop.otherSessions = [ "xfce" "plasma6" ];
   };
 }
