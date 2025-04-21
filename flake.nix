@@ -31,25 +31,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
         };
 
-      # mkSystemConfig =
-      #   host@{
-      #     hostname,
-      #     system,
-      #     config,
-      #     ...
-      #   }:
-      #   {
-      #     ${hostname} = lib.nixosSystem {
-      #       inherit system;
-
-      #       specialArgs = { inherit host; };
-
-      #       modules = [
-      #         ./system
-      #       ];
-      #     };
-      #   };
-
       hosts = [
         (mkHost {
           hostname = "zeta-asus";
@@ -98,18 +79,4 @@
         }
       ) hosts
     );
-  # {
-  #   nixosConfigurations = builtins.foldl' (a: b: a // b) { } (builtins.map mkSystemConfig hosts);
-
-  #   homeConfigurations."zeta" = home-manager.lib.homeManagerConfiguration {
-  #     inherit pkgs;
-
-  #     # Specify your home configuration modules here, for example,
-  #     # the path to your home.nix.
-  #     modules = [ ./home.nix ];
-
-  #     # Optionally use extraSpecialArgs
-  #     # to pass through arguments to home.nix
-  #   };
-  # };
 }

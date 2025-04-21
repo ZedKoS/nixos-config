@@ -40,12 +40,10 @@
   # Time zone
   time.timeZone = "Europe/Rome";
 
-  # Enable CUPS to print documents.
+  # Enable CUPS to print documents
   services.printing.enable = true;
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
+  # Enable sound
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -55,7 +53,7 @@
   users.users.${username} = {
     isNormalUser = true;
     initialPassword = username;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       chezmoi
     ];
