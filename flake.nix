@@ -8,12 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
+      stylix,
       ...
     }:
     let
@@ -51,6 +57,8 @@
           ...
         }:
         {
+          formatter.${system} = pkgs.alejandra;
+
           nixosConfigurations.${hostname} = lib.nixosSystem {
             inherit system;
 
@@ -60,6 +68,7 @@
             };
 
             modules = [
+              stylix.nixosModules.stylix
               ./system
             ];
           };
@@ -73,6 +82,7 @@
             };
 
             modules = [
+              stylix.homeManagerModules.stylix
               ./home
             ];
           };
