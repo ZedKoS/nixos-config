@@ -23,8 +23,11 @@
   programs = {
     bash.enable = true;
 
+    # Replacements for some system utils
     bat.enable = true;
     eza.enable = true;
+    zoxide.enable = true;
+    fzf.enable = true;
 
     helix = {
       enable = true;
@@ -49,8 +52,8 @@
   };
 
   home.shellAliases = {
-    ls = "eza -b";
-    tree = "eza -T";
+    ls = "eza -b --icons";
+    tree = "eza -T --icons";
 
     cat = "bat";
   };

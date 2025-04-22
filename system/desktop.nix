@@ -28,12 +28,18 @@ in
       };
 
       hyprland = {
-        programs.hyprland = {
-          enable = true;
-          xwayland.enable = true;
+        programs = {
+          hyprland = {
+            enable = true;
+            xwayland.enable = true;
+          };
+          hyprlock.enable = true;
+          waybar.enable = true;
         };
 
         environment.systemPackages = with pkgs; [
+          dunst
+          hyprpaper
           wofi
         ];
 

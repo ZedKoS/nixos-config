@@ -1,24 +1,22 @@
 { config, lib, ... }:
 let
   displayManager = config.desktop.displayManager;
-
-  displayManagers = {
-    ly = {
-      services.displayManager = {
-        ly.enable = true;
-
-        ly.settings = {
-          animation = "matrix";
-          box_title = "Box Title Test";
-        };
-
-        defaultSession = config.desktop.defaultSession;
-      };
-    };
-  };
 in
 {
   config = lib.mkMerge (
-    lib.mapAttrsToList (dm: value: lib.mkIf (dm == displayManager) value) displayManagers
+    lib.mapAttrsToList (dm: value: lib.mkIf (dm == displayManager) value) {
+      ly = {
+        services.displayManager = {
+          ly.enable = true;
+
+          ly.settings = {
+            animation = "matrix";
+            box_title = "< Login to NixOS >";
+          };
+
+          defaultSession = config.desktop.defaultSession;
+        };
+      };
+    }
   );
 }

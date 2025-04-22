@@ -54,9 +54,7 @@
     isNormalUser = true;
     initialPassword = username;
     extraGroups = [ "wheel" "input" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      chezmoi
-    ];
+    packages = [];
   };
 
   environment.systemPackages = with pkgs; [
@@ -69,7 +67,9 @@
 
     # Nix utils
     nil
-    nixfmt-rfc-style
+
+    # Other
+    chezmoi
   ];
 
   fonts = {
