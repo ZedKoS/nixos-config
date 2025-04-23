@@ -66,7 +66,12 @@
     btop
 
     # Nix utils
-    nil
+    nixd
+    alejandra
+
+    # Utils
+    brightnessctl
+    playerctl
 
     # Other
     chezmoi
