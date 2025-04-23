@@ -7,7 +7,6 @@
   ...
 }: {
   imports = [
-    ./options.nix
     ./hosts/${host.hostname}
     ./locale.nix
     ./login.nix

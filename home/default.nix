@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  stylix,
   username,
   host,
   ...
@@ -24,6 +25,7 @@
       enable = true;
       interactiveShellInit = "set -g fish_greeting";
     };
+    starship.enable = true;
 
     kitty.enable = true;
 
@@ -41,8 +43,13 @@
       ];
     };
 
-    librewolf.enable = true;
+    librewolf = {
+      enable = true;
+    };
   };
+
+  stylix.targets.helix.enable = false;
+  stylix.targets.librewolf.enable = false;
 
   home.shellAliases = {
     # Utils
@@ -53,4 +60,6 @@
   };
 
   # i18n.glibcLocales = {};
+
+  systemd.user.startServices = "sd-switch";
 }

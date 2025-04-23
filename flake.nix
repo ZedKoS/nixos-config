@@ -72,6 +72,8 @@
 
             modules = [
               stylix.nixosModules.stylix
+              ./options.nix
+              ./style.nix
               ./system
             ];
           };
@@ -86,6 +88,8 @@
 
             modules = [
               stylix.homeManagerModules.stylix
+              ./options.nix
+              ./style.nix
               ./home
             ];
           };
