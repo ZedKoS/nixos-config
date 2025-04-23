@@ -4,9 +4,7 @@
   username,
   host,
   ...
-}:
-
-{
+}: {
   home.username = username;
   home.homeDirectory = "/home/${username}";
 
@@ -22,7 +20,12 @@
   ];
 
   programs = {
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = "set -g fish_greeting";
+    };
+
+    kitty.enable = true;
 
     # Replacements for some system utils
     bat.enable = true;
@@ -42,9 +45,10 @@
   };
 
   home.shellAliases = {
-    ls = "eza -b --icons";
+    # Utils
+    ls = "eza --icons";
+    la = "eza -bla --icons";
     tree = "eza -T --icons";
-
     cat = "bat";
   };
 
