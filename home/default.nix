@@ -31,21 +31,10 @@
 
     helix = {
       enable = true;
-
       defaultEditor = true;
-
       extraPackages = [
         pkgs.marksman
       ];
-
-      settings = {
-        theme = "tokyonight";
-
-        editor = {
-          line-number = "relative";
-          lsp.display-messages = true;
-        };
-      };
     };
 
     librewolf.enable = true;
