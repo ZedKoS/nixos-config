@@ -18,10 +18,11 @@
 
   home.packages = with pkgs; [
     neofetch
+    chezmoi
   ];
 
   programs = {
-    bash.enable = true;
+    fish.enable = true;
 
     # Replacements for some system utils
     bat.enable = true;

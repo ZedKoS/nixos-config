@@ -5,9 +5,7 @@
   username,
   host,
   ...
-}:
-
-{
+}: {
   imports = [
     ./options.nix
     ./hosts/${host.hostname}
@@ -17,7 +15,7 @@
   ];
 
   nix.settings = {
-    allowed-users = [ "@wheel" ];
+    allowed-users = ["@wheel"];
     experimental-features = [
       "nix-command"
       "flakes"
@@ -49,14 +47,19 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User shell and default user configuration
   users.users.${username} = {
     isNormalUser = true;
     initialPassword = username;
-    extraGroups = [ "wheel" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "input"]; # Enable ‘sudo’ for the user.
     packages = [];
+    useDefaultShell = true;
   };
 
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+
+  # System-wide packages
   environment.systemPackages = with pkgs; [
     # (Almost) essentials
     efibootmgr
@@ -72,11 +75,9 @@
     # Utils
     brightnessctl
     playerctl
-
-    # Other
-    chezmoi
   ];
 
+  # System-wide fonts
   fonts = {
     enableDefaultPackages = true;
 
@@ -86,17 +87,7 @@
     ];
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
+  # Services
   services.openssh.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
@@ -117,5 +108,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
