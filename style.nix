@@ -18,10 +18,10 @@
 
   stylix.fonts = rec {
     sizes = {
-      applications = 12;
-      desktop = 10;
+      applications = 11;
+      desktop = 11;
       popups = 10;
-      terminal = 12;
+      terminal = 11;
     };
 
     # Nobody likes serif.

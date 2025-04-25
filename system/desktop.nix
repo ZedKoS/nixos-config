@@ -17,6 +17,7 @@ in
           };
 
           xkb.layout = "us";
+          xkb.variant = "intl";
         };
       };
 
@@ -33,13 +34,13 @@ in
             enable = true;
             xwayland.enable = true;
           };
-          hyprlock.enable = true;
-          waybar.enable = true;
         };
 
         environment.systemPackages = with pkgs; [
           dunst
+          hyprlock
           hyprpaper
+          waybar
           wofi
         ];
 

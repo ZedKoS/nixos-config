@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  stylix,
   username,
   host,
   ...
@@ -29,6 +30,8 @@
     device = "nodev";
     efiSupport = true;
   };
+
+  stylix.targets.grub.enable = false;
 
   # Networking
   networking.hostName = host.hostname;
