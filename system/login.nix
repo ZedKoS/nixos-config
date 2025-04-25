@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  displayManager = config.desktop.displayManager;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  displayManager = config.desktop.displayManager;
+in {
   config = lib.mkMerge (
     lib.mapAttrsToList (dm: value: lib.mkIf (dm == displayManager) value) {
       ly = {
@@ -15,6 +17,13 @@ in
           };
 
           defaultSession = config.desktop.defaultSession;
+        };
+      };
+
+      sddm = {
+        services.displayManager.sddm = {
+          enable = true;
+          wayland.enable = true;
         };
       };
     }
