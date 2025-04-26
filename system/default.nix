@@ -55,10 +55,9 @@
     initialPassword = username;
     extraGroups = ["wheel" "input"]; # Enable ‘sudo’ for the user.
     packages = [];
-    useDefaultShell = true;
+    shell = pkgs.fish;
   };
 
-  users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
   # System-wide packages
@@ -69,6 +68,7 @@
     vim
     wget
     btop
+    file
 
     # Nix utils
     nixd

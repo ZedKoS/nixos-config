@@ -33,7 +33,10 @@
     };
 
     monospace = {
-      package = pkgs.nerd-fonts.fira-code;
+      # Why not use a nerd font?
+      # Patched fonts don't work well in kitty without some hacks, and kitty
+      # already handles nerd symbols anyway, so just use a simple font.
+      package = pkgs.fira-code;
       name = "Fira Code";
     };
 
