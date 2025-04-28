@@ -71,13 +71,15 @@
     file
 
     # Nix utils
-    nixd
-    alejandra
+    nixd # LSP
+    alejandra # Formatter
 
     # Utils
     brightnessctl
     playerctl
   ];
+
+  programs.nh.enable = true;
 
   # System-wide fonts
   fonts = {

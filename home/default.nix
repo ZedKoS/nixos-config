@@ -53,6 +53,7 @@
   };
 
   stylix.targets.helix.enable = false;
+  stylix.targets.librewolf.profileNames = [ username ];
 
   # i18n.glibcLocales = {};
 }
