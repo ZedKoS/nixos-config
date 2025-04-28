@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./programs
     ./terminal.nix
   ];
 
@@ -21,39 +22,6 @@
 
   # Change this value only if you know what you're doing
   home.stateVersion = "24.11";
-
-  home.packages = with pkgs; [
-    neofetch
-    chezmoi
-  ];
-
-  programs = {
-    # Replacements for some system utils
-    bat.enable = true;
-    eza.enable = true;
-    zoxide.enable = true;
-    fzf.enable = true;
-
-    helix = {
-      enable = true;
-      defaultEditor = true;
-      extraPackages = [
-        pkgs.marksman
-      ];
-    };
-
-    librewolf = {
-      enable = true;
-    };
-
-    ssh = {
-      enable = true;
-      addKeysToAgent = "yes";
-    };
-  };
-
-  stylix.targets.helix.enable = false;
-  stylix.targets.librewolf.profileNames = [ username ];
 
   # i18n.glibcLocales = {};
 }

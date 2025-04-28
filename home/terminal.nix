@@ -5,13 +5,6 @@
       interactiveShellInit = "set -g fish_greeting";
     };
 
-    starship = {
-      enable = true;
-
-      settings = {
-      };
-    };
-
     kitty = {
       enable = true;
 
