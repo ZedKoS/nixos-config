@@ -9,7 +9,16 @@
   mkSessionIfEnabled = session: value: lib.mkIf (lib.elem session sessions) value;
 in {
   config = lib.mkMerge (
-    lib.mapAttrsToList mkSessionIfEnabled {
+    [
+      {
+        environment.systemPackages = with pkgs; [
+          # Utils
+          brightnessctl
+          playerctl
+        ];
+      }
+    ]
+    ++ (lib.mapAttrsToList mkSessionIfEnabled {
       xfce = {
         services.xserver = {
           enable = true;
@@ -44,6 +53,6 @@ in {
           wofi
         ];
       };
-    }
+    })
   );
 }

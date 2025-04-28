@@ -74,9 +74,6 @@
     nixd # LSP
     alejandra # Formatter
 
-    # Utils
-    brightnessctl
-    playerctl
   ];
 
   programs.nh.enable = true;
