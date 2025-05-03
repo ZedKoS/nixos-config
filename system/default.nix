@@ -9,9 +9,9 @@
 }: {
   imports = [
     ./hosts/${host.hostname}
-    ./locale.nix
-    ./login.nix
-    ./desktop.nix
+    ./modules/locale.nix
+    ./modules/login.nix
+    ./modules/desktop.nix
   ];
 
   nix.settings = {
