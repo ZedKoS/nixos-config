@@ -46,9 +46,10 @@ in {
         };
 
         environment.systemPackages = with pkgs; [
-          dunst
-          hyprlock
-          hyprpaper
+          dunst # notification daemon
+          hyprlock # screen lock
+          hyprpaper # wallpaper
+          hyprpolkitagent
           waybar
           wofi
         ];

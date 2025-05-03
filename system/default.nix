@@ -47,6 +47,7 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   # User shell and default user configuration
@@ -90,6 +91,10 @@
 
   # Services
   services.openssh.enable = true;
+  programs.ssh = {
+    startAgent = true;
+    agentTimeout = "1h";
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
