@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   stylix,
   username,
@@ -7,8 +8,7 @@
   ...
 }: {
   imports = [
-    ./programs
-    ./terminal.nix
+    ./modules
   ];
 
   home.username = username;

@@ -2,6 +2,7 @@
   programs = {
     fish = {
       enable = true;
+      # Disable greeting message
       interactiveShellInit = "set -g fish_greeting";
     };
 
