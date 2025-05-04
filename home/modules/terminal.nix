@@ -23,5 +23,9 @@
     ls = "eza --icons";
     la = "eza -bla --icons";
     tree = "eza -T --icons";
+
+    # Man pages for configuration.nix and home-configuration.nix
+    nixconf = "man configuration.nix";
+    homeconf = "man home-configuration.nix";
   };
 }

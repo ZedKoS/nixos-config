@@ -18,48 +18,47 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      stylix,
-      ...
-    }:
-    let
-      username = "zeta";
-      lib = nixpkgs.lib;
+  outputs = {
+    nixpkgs,
+    home-manager,
+    stylix,
+    ...
+  }: let
+    username = "zeta";
+    lib = nixpkgs.lib;
 
-      mkHost =
-        {
-          hostname,
-          system,
-          config ? { },
-        }:
-        rec {
-          inherit hostname system config;
-          pkgs = nixpkgs.legacyPackages.${system};
-        };
+    mkHost = {
+      hostname,
+      system,
+      config ? {},
+    }: rec {
+      inherit hostname system config;
+      pkgs = nixpkgs.legacyPackages.${system};
+    };
 
-      hosts = [
-        (mkHost {
-          hostname = "zeta-asus";
-          system = "x86_64-linux";
-        })
-      ];
-
-    in
-
+    hosts = [
+      (mkHost {
+        hostname = "zeta-asus";
+        system = "x86_64-linux";
+      })
+    ];
+  in
     # Iterate through each host
-    builtins.foldl' lib.recursiveUpdate { } (
+    builtins.foldl' lib.recursiveUpdate {} (
       builtins.map (
-        host@{
+        host @ {
           hostname,
           system,
           config,
           pkgs,
           ...
-        }:
-        {
+        }: let
+          commonModules = [
+            ./options.nix
+            ./hosts/${host.hostname}/config.nix
+            ./style.nix
+          ];
+        in {
           formatter.${system} = pkgs.alejandra;
 
           nixosConfigurations.${hostname} = lib.nixosSystem {
@@ -70,12 +69,13 @@
               inherit host;
             };
 
-            modules = [
-              stylix.nixosModules.stylix
-              ./options.nix
-              ./style.nix
-              ./system
-            ];
+            modules =
+              commonModules
+              ++ [
+                stylix.nixosModules.stylix
+                ./hosts/${host.hostname}/hardware-configuration.nix
+                ./system
+              ];
           };
 
           homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
@@ -86,14 +86,15 @@
               inherit host;
             };
 
-            modules = [
-              stylix.homeManagerModules.stylix
-              ./options.nix
-              ./style.nix
-              ./home
-            ];
+            modules =
+              commonModules
+              ++ [
+                stylix.homeManagerModules.stylix
+                ./home
+              ];
           };
         }
-      ) hosts
+      )
+      hosts
     );
 }

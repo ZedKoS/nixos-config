@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  pkgs,
+  username,
   ...
 }: let
   cfg = config.desktop;
@@ -10,15 +12,28 @@
 in {
   config = lib.mkMerge (lib.mapAttrsToList mkSessionIfEnabled {
     hyprland = {
-      wayland.windowManager.hyprland = {
-        enable = true;
-        package = null;
-      };
+      # wayland.windowManager.hyprland = {
+      #   enable = true;
+      #   package = null;
+      # };
+
+      home.packages = with pkgs; [
+        hyprpaper
+        hyprpolkitagent
+      ];
 
       services = {
         hyprpaper = {
           enable = true;
-          # settings = {};
+
+          settings = let
+            wp = "/home/${username}/Wallpapers/MistyTrees.jpg";
+          in {
+            preload = [wp];
+            wallpaper = [
+              ",${wp}"
+            ];
+          };
         };
 
         hyprpolkitagent.enable = true;

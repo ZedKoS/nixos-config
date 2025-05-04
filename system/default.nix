@@ -8,10 +8,7 @@
   ...
 }: {
   imports = [
-    ./hosts/${host.hostname}
-    ./modules/locale.nix
-    ./modules/login.nix
-    ./modules/desktop.nix
+    ./modules
   ];
 
   nix.settings = {
@@ -60,6 +57,7 @@
   };
 
   programs.fish.enable = true;
+  documentation.man.generateCaches = false;
 
   # System-wide packages
   environment.systemPackages = with pkgs; [

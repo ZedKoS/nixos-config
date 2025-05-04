@@ -43,13 +43,12 @@ in {
             enable = true;
             xwayland.enable = true;
           };
+
+          hyprlock.enable = true;
         };
 
         environment.systemPackages = with pkgs; [
-          hyprlock # screen lock
-          hyprpaper # wallpaper
           hyprpicker # color picker
-          hyprpolkitagent
 
           dunst # notification daemon
           waybar
