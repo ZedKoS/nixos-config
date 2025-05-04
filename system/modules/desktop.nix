@@ -46,12 +46,18 @@ in {
         };
 
         environment.systemPackages = with pkgs; [
-          dunst # notification daemon
           hyprlock # screen lock
           hyprpaper # wallpaper
+          hyprpicker # color picker
           hyprpolkitagent
+
+          dunst # notification daemon
           waybar
           wofi
+
+          # Clipboard
+          clipse
+          wl-clipboard
         ];
       };
     })
