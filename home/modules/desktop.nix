@@ -17,6 +17,11 @@ in {
       #   package = null;
       # };
 
+      # xdg.portal.configPackages = [
+      #   pkgs.xdg-desktop-portal-hyprland
+      #   pkgs.xdg-xdg-desktop-portal-gtk
+      # ];
+
       home.packages = with pkgs; [
         hyprpaper
         hyprpolkitagent

@@ -1,10 +1,23 @@
 {...}: {
   programs = {
+    # Shell
+    
     fish = {
       enable = true;
       # Disable greeting message
       interactiveShellInit = "set -g fish_greeting";
     };
+
+    nushell = {
+      enable = true;
+    };
+
+    # Multi-shell autocompletion
+    carapace = {
+      enable = true;
+    };
+
+    # Terminal emulator
 
     kitty = {
       enable = true;
