@@ -48,6 +48,10 @@
         hostname = "zeta-asus";
         system = "x86_64-linux";
       })
+      (mkHost {
+        hostname = "zeta-xps";
+        system = "x86_64-linux";
+      })
     ];
   in
     # Iterate through each host
