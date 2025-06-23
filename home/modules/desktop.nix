@@ -44,5 +44,9 @@ in {
         hyprpolkitagent.enable = true;
       };
     };
+
+    plasma6 = {
+      stylix.targets.kde.enable = false;
+    };
   });
 }

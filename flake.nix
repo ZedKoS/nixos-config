@@ -100,7 +100,7 @@
             modules =
               commonModules
               ++ [
-                stylix.homeManagerModules.stylix
+                stylix.homeModules.stylix
                 ./home
               ];
           };

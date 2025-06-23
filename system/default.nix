@@ -57,7 +57,6 @@
   };
 
   programs.fish.enable = true;
-  documentation.man.generateCaches = false;
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
