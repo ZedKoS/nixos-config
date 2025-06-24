@@ -1,6 +1,5 @@
 { pkgs, username, ...}: {
   imports = [
-    ./starship.nix
     ./helix.nix
   ];
 

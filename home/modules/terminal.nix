@@ -29,6 +29,24 @@
       # Include extra config not managed by home-manager
       # extraConfig = "include other.conf"
     };
+
+    # Terminal prompt
+    starship = {
+      enable = true;
+
+      settings = {
+        add_newline = true;
+
+        # format = ''
+      
+        # '';
+
+        # character = {
+        #   success_symbol = null;
+        
+        # };
+      };
+    };
   };
 
   home.shellAliases = {
