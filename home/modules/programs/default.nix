@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     neofetch
     chezmoi
+
+    discord
   ];
 
   programs = {

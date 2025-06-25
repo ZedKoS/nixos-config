@@ -71,8 +71,11 @@
     # Nix utils
     nixd # LSP
     alejandra # Formatter
-
   ];
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   programs.nh.enable = true;
 
@@ -82,6 +85,8 @@
 
     packages = with pkgs; [
       ubuntu_font_family
+      noto-fonts
+      nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code
     ];
   };
