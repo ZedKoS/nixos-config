@@ -28,18 +28,7 @@ in {
       ];
 
       services = {
-        hyprpaper = {
-          enable = true;
-
-          settings = let
-            wp = "/home/${username}/Wallpapers/MistyTrees.jpg";
-          in {
-            preload = [wp];
-            wallpaper = [
-              ",${wp}"
-            ];
-          };
-        };
+        hyprpaper.enable = true;
 
         hyprpolkitagent.enable = true;
       };
