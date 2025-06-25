@@ -52,7 +52,7 @@ in {
 
           dunst # notification daemon
           waybar
-          wofi
+          rofi # app launcher & more
 
           # Clipboard
           clipse
