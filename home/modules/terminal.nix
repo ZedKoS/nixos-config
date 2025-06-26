@@ -1,7 +1,6 @@
 {...}: {
   programs = {
     # Shell
-    
     fish = {
       enable = true;
       # Disable greeting message
@@ -38,12 +37,12 @@
         add_newline = true;
 
         # format = ''
-      
+
         # '';
 
         # character = {
         #   success_symbol = null;
-        
+
         # };
       };
     };

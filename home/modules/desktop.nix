@@ -32,6 +32,14 @@ in {
 
         hyprpolkitagent.enable = true;
       };
+
+      programs = {
+        rofi = {
+          enable = true;
+          modes = ["drun" "run" "emoji" "ssh"];
+          terminal = "${pkgs.kitty}/bin/kitty";
+        };
+      };
     };
 
     plasma6 = {
