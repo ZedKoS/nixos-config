@@ -9,6 +9,7 @@
   mkSessionIfEnabled = session: value: lib.mkIf (lib.elem session sessions) value;
 in {
   config = lib.mkMerge (
+    # Common configuration options
     [
       {
         environment.systemPackages = with pkgs; [
@@ -16,8 +17,14 @@ in {
           brightnessctl
           playerctl
         ];
+
+        environment.sessionVariables = {
+          NIXOS_OZONE_WL = "1";
+        };
       }
     ]
+
+    # Session-specific options
     ++ (lib.mapAttrsToList mkSessionIfEnabled {
       xfce = {
         services.xserver = {

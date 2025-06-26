@@ -73,10 +73,6 @@
     alejandra # Formatter
   ];
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
   programs.nh.enable = true;
 
   # System-wide fonts
