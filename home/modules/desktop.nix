@@ -36,10 +36,15 @@ in {
       programs = {
         rofi = {
           enable = true;
-          modes = ["drun" "run" "emoji" "ssh"];
+          plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
+
+          modes = ["drun" "run" "emoji" "ssh" "calc"];
+
           terminal = "${pkgs.kitty}/bin/kitty";
         };
       };
+
+      stylix.targets.rofi.enable = false;
     };
 
     plasma6 = {

@@ -59,7 +59,6 @@ in {
 
           dunst # notification daemon
           waybar
-          rofi # app launcher & more
 
           # Clipboard
           clipse

@@ -21,6 +21,8 @@
       enable = true;
     };
 
+    spotify-player.enable = true;
+
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
