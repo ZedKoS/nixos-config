@@ -50,11 +50,11 @@ in {
             enable = true;
             xwayland.enable = true;
           };
+
+          hyprlock.enable = true;
         };
 
         environment.systemPackages = with pkgs; [
-          hyprpicker # color picker
-
           dunst # notification daemon
           waybar
 

@@ -12,19 +12,12 @@
 in {
   config = lib.mkMerge (lib.mapAttrsToList mkSessionIfEnabled {
     hyprland = {
-      # wayland.windowManager.hyprland = {
-      #   enable = true;
-      #   package = null;
-      # };
-
       # xdg.portal.configPackages = [
       #   pkgs.xdg-desktop-portal-hyprland
       #   pkgs.xdg-xdg-desktop-portal-gtk
       # ];
-
       home.packages = with pkgs; [
-        hyprpaper
-        hyprpolkitagent
+        hyprpicker # color picker
       ];
 
       services = {
@@ -34,7 +27,11 @@ in {
         hyprpolkitagent.enable = true;
 
         # Day/night gamma adjustment
-        wlsunset.enable = true;
+        wlsunset = {
+          enable = true;
+          latitude = 45;
+          longitude = 0;
+        };
       };
 
       programs = {
@@ -47,7 +44,7 @@ in {
           terminal = "${pkgs.kitty}/bin/kitty";
         };
 
-        hyprlock.enable = true;
+        wlogout.enable = true;
       };
 
       stylix.targets.rofi.enable = false;
