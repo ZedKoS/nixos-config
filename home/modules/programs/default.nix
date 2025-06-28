@@ -4,10 +4,13 @@
   ];
 
   home.packages = with pkgs; [
-    neofetch
     chezmoi
-
     discord
+    du-dust # disk usage analyzer
+    fastfetch
+    tokei # code stats
+    unimatrix
+    wiki-tui # wikipedia
   ];
 
   programs = {
@@ -16,6 +19,12 @@
     eza.enable = true;
     zoxide.enable = true;
     fzf.enable = true;
+
+    git = {
+      enable = true;
+      delta.enable = true;
+    };
+    lazygit.enable = true; # fancy git tui
 
     librewolf = {
       enable = true;
