@@ -30,6 +30,14 @@
 
   stylix.targets.grub.enable = false;
 
+  # Power button
+  services.logind.powerKey = "sleep";
+  services.logind.lidSwitch = "lock";
+
+  # Laptop settings
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+
   # Networking
   networking.hostName = host.hostname;
   networking.networkmanager.enable = true;
@@ -87,7 +95,10 @@
     ];
   };
 
-  # Services
+  # Other services
+
+  services.flatpak.enable = true;
+
   services.openssh.enable = true;
   programs.ssh = {
     startAgent = true;
