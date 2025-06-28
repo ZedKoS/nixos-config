@@ -50,8 +50,6 @@ in {
             enable = true;
             xwayland.enable = true;
           };
-
-          hyprlock.enable = true;
         };
 
         environment.systemPackages = with pkgs; [

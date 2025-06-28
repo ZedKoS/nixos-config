@@ -28,9 +28,13 @@ in {
       ];
 
       services = {
+        # Wallpaper
         hyprpaper.enable = true;
 
         hyprpolkitagent.enable = true;
+
+        # Day/night gamma adjustment
+        wlsunset.enable = true;
       };
 
       programs = {
@@ -42,6 +46,8 @@ in {
 
           terminal = "${pkgs.kitty}/bin/kitty";
         };
+
+        hyprlock.enable = true;
       };
 
       stylix.targets.rofi.enable = false;
