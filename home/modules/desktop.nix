@@ -14,6 +14,8 @@ in {
     hyprland = {
       home.packages = with pkgs; [
         hyprpicker # color picker
+        hyprpaper # wallpaper
+        wlsunset # gamma adjustment
       ];
 
       services = {
