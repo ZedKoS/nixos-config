@@ -16,19 +16,12 @@
         home-manager.follows = "home-manager";
       };
     };
-
-    # Rust toolchain
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     stylix,
-    fenix,
     ...
   }: let
     username = "zeta";

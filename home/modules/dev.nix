@@ -3,8 +3,7 @@
     clang
 
     # Rust
-    rustc
-    cargo
+    rustup
     rustfmt
     rust-analyzer
 

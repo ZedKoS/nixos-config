@@ -12,10 +12,6 @@
 in {
   config = lib.mkMerge (lib.mapAttrsToList mkSessionIfEnabled {
     hyprland = {
-      # xdg.portal.configPackages = [
-      #   pkgs.xdg-desktop-portal-hyprland
-      #   pkgs.xdg-xdg-desktop-portal-gtk
-      # ];
       home.packages = with pkgs; [
         hyprpicker # color picker
       ];
@@ -37,7 +33,7 @@ in {
       programs = {
         rofi = {
           enable = true;
-          plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
+          plugins = [pkgs.rofi-calc pkgs.rofi-emoji];
 
           modes = ["drun" "run" "emoji" "ssh" "calc"];
 
