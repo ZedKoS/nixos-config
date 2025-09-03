@@ -3,9 +3,6 @@
     clang
 
     # Rust
-    rustup
-    rustfmt
-    rust-analyzer
-
+    rustup # includes rustfmt and rust-analyzer
   ];
 }
