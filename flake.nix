@@ -8,25 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    stylix,
     ...
   }: let
     username = "zeta";
     lib = nixpkgs.lib;
 
+    # Helper function that creates a host record
+    # Corresponding system nixpkgs gets instantiated
     mkHost = {
       hostname,
       system,
@@ -47,24 +40,32 @@
       })
     ];
   in
-    # Iterate through each host
-    builtins.foldl' lib.recursiveUpdate {} (
+    # Generate configurations for each host and choose the correct one
+    builtins.foldl' lib.recursiveUpdate
+    # host-independent config
+    {
+      devShells."x86_64-linux".default = let
+        pkgs = nixpkgs.legacyPackages."x86_64";
+      in
+        import ./devshell.nix {inherit pkgs;};
+    }
+    # per-host config
+    (
       builtins.map (
         host @ {
           hostname,
           system,
-          config,
           pkgs,
           ...
         }: let
           commonModules = [
             ./options.nix
             ./hosts/${host.hostname}/config.nix
-            ./style.nix
           ];
         in {
           formatter.${system} = pkgs.alejandra;
 
+          # -- System configuration --
           nixosConfigurations.${hostname} = lib.nixosSystem {
             inherit system;
 
@@ -76,12 +77,12 @@
             modules =
               commonModules
               ++ [
-                stylix.nixosModules.stylix
                 ./hosts/${host.hostname}/hardware-configuration.nix
                 ./system
               ];
           };
 
+          # -- Home configuration --
           homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
@@ -93,7 +94,6 @@
             modules =
               commonModules
               ++ [
-                stylix.homeModules.stylix
                 ./home
               ];
           };

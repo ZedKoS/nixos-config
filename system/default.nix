@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  stylix,
   username,
   host,
   ...
@@ -28,11 +27,9 @@
     efiSupport = true;
   };
 
-  stylix.targets.grub.enable = false;
-
   # Power button
-  services.logind.powerKey = "sleep";
-  services.logind.lidSwitch = "lock";
+  services.logind.settings.Login.HandlePowerKey = "sleep";
+  services.logind.settings.Login.HandleLidSwitch = "lock";
 
   # Laptop settings
   powerManagement.enable = true;
@@ -75,6 +72,7 @@
     wget
     btop
     file
+    ripgrep
 
     # Nix utils
     nixd # LSP

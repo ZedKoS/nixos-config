@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  username,
   ...
 }: let
   cfg = config.desktop;
@@ -12,6 +11,17 @@
 in {
   config = lib.mkMerge (lib.mapAttrsToList mkSessionIfEnabled {
     hyprland = {
+      wayland.windowManager.hyprland = {
+        enable = true;
+
+        systemd.enable = true;
+        systemd.variables = ["--all"];
+
+        extraConfig = ''
+          source = ~/.config/hypr/hyprland_extra.conf
+        '';
+      };
+
       home.packages = with pkgs; [
         hyprpicker # color picker
         hyprpaper # wallpaper
@@ -44,12 +54,6 @@ in {
 
         wlogout.enable = true;
       };
-
-      stylix.targets.rofi.enable = false;
-    };
-
-    plasma6 = {
-      stylix.targets.kde.enable = false;
     };
   });
 }
